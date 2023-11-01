@@ -30,7 +30,7 @@ int conta_passo(int nums[], int n) {
 }
 
 int main() {
-    int nums[] = {5, 3, 4, 4, 7, 3, 6, 11, 8, 5, 11};
+    int nums[] = {4, 3, 5, 1, 2};
     int n = sizeof(nums) / sizeof(nums[0]);
     int passos = conta_passo(nums, n);
     
