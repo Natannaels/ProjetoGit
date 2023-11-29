@@ -1,0 +1,3 @@
+Este é um exemplo de fprintf em C.
+Número inteiro: 42
+Número de ponto flutuante: 3.140000

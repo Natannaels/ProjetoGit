@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int contarOcorrencias(char *str, char *x) {
+int contarOcorrencias(char str[], char x[]) {
     int tamStr = strlen(str);
     int tamPalavra = strlen(x);
     int count = 0;
 
-    for (int i = 0; i <= tamStr - tamPalavra; i++) {
+    for (int i = 0; i <= tamStr ; i++) {
         int cont = 0;
 
         for (int j = 0; j < tamPalavra; j++) {
