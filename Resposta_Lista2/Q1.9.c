@@ -1,50 +1,66 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int valorDoCaractere(char c) {
-    switch (c) {
-        case 'I':
-            return 1;
-        case 'V':
-            return 5;
-        case 'X':
-            return 10;
-        case 'L':
-            return 50;
-        case 'C':
-            return 100;
-        case 'D':
-            return 500;
-        case 'M':
-            return 1000;
-        default:
-            return 0;
-    }
-}
+int romanToInt(char * s){
+    int i = 0;
+    int result = 0;
+    while(s[i] != '\0') {
+        switch (s[i]) {
+            case 'I':
+                if(s[i + 1] == 'V' || s[i + 1] == 'X') {
+                    result -= 1;
+                }
+                else {
+                    result += 1;
+                }
+                break;
 
-int romanToInt(char *s) {
-    int resultado = 0;
-    int n = strlen(s);
-    // Percorre a string da direita para a esquerda
-    for(int i = n - 1; i >= 0; i--) {
-        int valorAtual = valorDoCaractere(s[i]);
+            case 'V':
+                result += 5;
+                break;
+            
+            case 'X':
+                if(s[i + 1] == 'L' || s[i + 1] == 'C') {
+                    result -= 10;
+                }  
+                else {
+                    result += 10;
+                }  
+                break;
+            
+            case 'L':
+                result += 50;
+                break;
+            case 'C': 
+                if(s[i + 1] == 'D' || s[i + 1] == 'M') {
+                    result -= 100;
+                }  
+                else {
+                    result += 100;
+                }  
+                break;
 
-        // Verifica se precisamos subtrair
-        if (i < n - 1 && valorAtual < valorDoCaractere(s[i + 1])) {
-            resultado -= valorAtual;
-        } else {
-            resultado += valorAtual;
+                case 'D':
+                    result += 500;
+                    break;
+                
+                case 'M':
+                    result += 1000;
+                    break;
+
+                default:
+                    break;
         }
+        i++;
     }
-
-    return resultado;
+    return result;
 }
-
 int main() {
-    char numeralRomano[] = "XL";
-
+    char numeralRomano[] = "XX"; 
     int resultado = romanToInt(numeralRomano);
 
-    printf("O numeral romano %s é equivalente a %d\n", numeralRomano, resultado);
+    printf("O numeral romano %s é equivalente a %d em números inteiros.\n", numeralRomano, resultado);
 
     return 0;
 }

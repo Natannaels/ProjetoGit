@@ -1,39 +1,38 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-int contarOcorrencias(char str[], char x[]) {
-    int tamStr = strlen(str);
-    int tamPalavra = strlen(x);
-    int count = 0;
+int contar_ocorrencia(char palavra[], char str[]) {
+    int tam_palavra = strlen(palavra);
+    int tam_str = strlen(str);
+    int cont = 0;
 
-    for (int i = 0; i <= tamStr ; i++) {
-        int cont = 0;
-
-        for (int j = 0; j < tamPalavra; j++) {
-            if (str[i + j] == x[j]) {
-                cont++;
-            } else {
+    for(int i = 0; i < tam_str; i++) {
+        int verificador = 0;
+        for(int j = 0; j < tam_palavra; j++) {
+            if(str[i + j] == palavra[j]) {
+                verificador++;
+            }
+            else {
                 break;
             }
         }
-
-        if (cont == tamPalavra) {
-            // Encontramos uma ocorrência completa da palavra
-            count++;
+        if(verificador == tam_palavra) {
+            cont++;
         }
     }
 
-    return count;
+    return cont;
+
 }
 
 int main() {
-    char texto[] = "O exemplo é uma forma de explicar exemplos. Um bom exemplo é valioso.";
+    char str[] = "Amor sabor pavor dor rancor dor dor Amor";
+    char palavra[] = "Amor";
 
-    char palavra[] = "exemplo";
+    int ocorrencias = contar_ocorrencia(palavra, str);
 
-    int resultado = contarOcorrencias(texto, palavra);
-
-    printf("A palavra '%s' ocorre %d vezes na string.\n", palavra, resultado);
+    printf("%d", ocorrencias);
 
     return 0;
 }

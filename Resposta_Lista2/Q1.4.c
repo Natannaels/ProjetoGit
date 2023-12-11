@@ -28,15 +28,15 @@ int main() {
     printf("Digite uma string: ");
     scanf(" %[^\n]s", str);
 
-    printf("Digite uma string a ser procurada: ");
+    printf("Digite uma palavra a ser procurada: ");
     scanf(" %[^\n]s", x);
 
     int pos = encontrar(x, str);
     if(pos != -1){
-        printf("A string está na posicao %d", pos);
+        printf("A palavra está na posicao %d", pos);
     }
     else{
-        printf("string nao encontrada");
+        printf("palavra nao encontrada");
     }
     return 0;
 }
