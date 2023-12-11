@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mochila_lib.h": "c",
+        "header.h": "c"
+    }
+}
