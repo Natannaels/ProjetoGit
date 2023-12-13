@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
+int comparar( char *str1, char *str2) {
+    
+
+    while (*str1 != '\0' && *str2 != '\0') {
+        if (*str1 != *str2) {
+            // Se os caracteres são diferentes, retorna a diferença
+            return *str1 - *str2;
+        }
+        str1++;
+        str2++;
+    }
+
+    // Retorna 0 se as strings forem iguais até o final
+    return 0;
+}
+
 int ehpali(char str[]){
     int n = strlen(str), j = 0;
     char aux[n + 1];
@@ -11,7 +27,7 @@ int ehpali(char str[]){
     }
     aux[j] = '\0';
 
-    return strcmp(aux, str);
+    return comparar(aux, str);
 }
 
 int main() {

@@ -2,52 +2,42 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct {
-    char modelo[100];
-    int ano;
-} Carro;
+int encontrar(char str[], char palavra[]) {
+    int tam_str = strlen(str);
+    int tam_pala = strlen(palavra);
 
-
-void cadastrarCarro(Carro **catalogo, int *tamanho);
-
-int main() {
-    Carro* catalogo = NULL;
-    int tamanho = 0;
-
-    while(1) {
-        cadastrarCarro(&catalogo, &tamanho);
-
-        if(catalogo[tamanho - 1].ano < 0) {
-            break;
+    for(int i = 0; i < tam_str; i++) {
+        int cont = 0;
+        for(int j = 0; j < tam_pala; j++) {
+            if(str[i + j] == palavra[j]) {
+                cont++;
+            }
+            else{
+                break;
+            }
+        }
+        if(cont == tam_pala) {
+            return i;
         }
     }
-
-    free(catalogo);
-
-    return 0;
+    return -1;
 }
-void cadastrarCarro(Carro **catalogo, int *tamanho) {
-    (*tamanho)++;
 
-    *catalogo = (Carro*)realloc(*catalogo, sizeof(Carro) * (*tamanho));
-    if(*catalogo == NULL) {
-        printf("Erro de alocacao");
-        return -1;
+int main() {
+    char str[100];
+    char x[20];
+    printf("Digite uma string: ");
+    scanf(" %[^\n]s", str);
+
+    printf("Digite uma palavra a ser procurada: ");
+    scanf(" %[^\n]s", x);
+
+    int pos = encontrar(x, str);
+    if(pos != -1){
+        printf("A palavra está na posicao %d", pos);
     }
-
-    printf("Digite o modelo:");
-    scanf("%s", (*catalogo)[*tamanho - 1].modelo);
-    printf("Digite o ano:");
-    scanf("%d", &(*catalogo)[*tamanho - 1].ano);
-
-    FILE* arquivo = fopen("catalogo.txt","a");
-    if(arquivo == NULL){
-        printf("Erro no arquivo");
-        return -1;
+    else{
+        printf("palavra nao encontrada");
     }
-
-    fprintf(arquivo, "%s %d\n", (*catalogo)[*tamanho - 1].modelo, (*catalogo)[*tamanho - 1].ano);
-
-    fclose(arquivo);
-
+    return 0;
 }

@@ -1,3 +1,5 @@
-fiesta 2010
-corsa 2020
-cubo -1
+Fiesta; 2009
+Corsa; 2007
+Kia; 2020
+fusca; 0
+kj; -1

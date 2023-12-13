@@ -5,4 +5,4 @@
 6 Ana 55.2
 1 Pedro 72.3
 1 Luísa 66.0
-1 Paula 52.7
+2 Paula 52.7
